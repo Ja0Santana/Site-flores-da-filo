@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flores da Filó</title>
+    <link rel="icon" type="image/jpeg" href="assets/images/Logo.jpeg" class="rounded-sm" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            width: 100%;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-item-reveal {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transform: translateY(-10px);
+            transition: all 0.4s ease;
+        }
+
+        .nav-item-reveal.active {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0);
+        }
+
+        /* Otimização de Animação: Fica pronto desde o primeiro refresh */
+        #header-divider {
+            transition: transform 0.24s ease-in-out;
+            will-change: transform;
+        }
+
+        #mobile-menu {
+            transition: max-height 0.24s ease-in-out, opacity 0.24s ease-in-out;
+        }
+
+        #nav-bg {
+            transition: height 0.24s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="text-slate-800 overflow-x-hidden">
+    <div
+        class="min-h-screen bg-[#B35A74] bg-[radial-gradient(rgba(255,255,255,0.18)_1px,transparent_1px)] [background-size:14px_14px] [overflow-x:clip]">
+
+
+        <header id="main-header" class="sticky top-0 z-50 w-full">
+            <!-- Camada única de fundo "Vidro Fosco" -->
+            <div id="nav-bg" class="absolute inset-0 bg-[#E9A6B2]/85 backdrop-blur-md -z-10"></div>
+
+            <div class="mx-auto max-w-6xl px-4 pt-4 pb-8 grid grid-cols-2 md:grid-cols-3 items-center">
+                <!-- Esquerda: Brand -->
+                <div class="flex items-center gap-3">
+                    <div class="h-10 w-10 overflow-hidden rounded-full bg-white/20 ring-1 ring-white/30">
+                        <img src="assets/images/Logo.jpeg" alt="Flores da Filó" class="h-full w-full object-cover" />
+                    </div>
+                    <span class="text-base font-extrabold text-white">Flores da Filó</span>
+                </div>
+
+                <!-- Centro: Navegação Centralizada em Botões (Desktop) -->
+                <nav class="hidden items-center justify-center gap-4 text-xs font-bold text-white md:flex">
+                    <a href="#inicio"
+                        class="rounded-full bg-[#C85E6C]/80 px-4 py-2 hover:bg-[#C85E6C] transition-all hover:scale-105 active:scale-95 shadow-sm">Início</a>
+                    <a href="#mimos"
+                        class="rounded-full bg-[#C85E6C]/80 px-4 py-2 hover:bg-[#C85E6C] transition-all hover:scale-105 active:scale-95 shadow-sm whitespace-nowrap">Nossos
+                        Mimos</a>
+                    <a href="#personalizados"
+                        class="rounded-full bg-[#C85E6C]/80 px-4 py-2 hover:bg-[#C85E6C] transition-all hover:scale-105 active:scale-95 shadow-sm">Personalizados</a>
+                    <a href="#contato"
+                        class="rounded-full bg-[#C85E6C]/80 px-4 py-2 hover:bg-[#C85E6C] transition-all hover:scale-105 active:scale-95 shadow-sm">Contato</a>
+                </nav>
+
+                <!-- Direita: Menu Hamburguer (Mobile) -->
+                <div class="flex items-center justify-end md:hidden">
+                    <button id="mobile-menu-button"
+                        class="text-white p-2 hover:bg-white/10 rounded-lg transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu Mobile Dropdown (Transparente, com animação de slide) -->
+            <div id="mobile-menu"
+                class="absolute left-0 top-full max-h-0 overflow-hidden opacity-0 w-full md:hidden z-50">
+                <div class="relative flex flex-col items-center gap-5 pt-8 pb-16 text-xl font-bold text-white">
+                    <a href="#inicio"
+                        class="mobile-link hover:text-[#7B2E43] transition-colors py-1 border-b-2 border-transparent hover:border-white/20">Início</a>
+                    <a href="#mimos"
+                        class="mobile-link hover:text-[#7B2E43] transition-colors py-1 border-b-2 border-transparent hover:border-white/20">Nossos
+                        Mimos</a>
+                    <a href="#personalizados"
+                        class="mobile-link hover:text-[#7B2E43] transition-colors py-1 border-b-2 border-transparent hover:border-white/20">Personalizados</a>
+                    <a href="#contato"
+                        class="mobile-link hover:text-[#7B2E43] transition-colors py-1 border-b-2 border-transparent hover:border-white/20">Contato</a>
+
+                    <!-- Botão de Contato Rápido -->
+                    <a href="https://wa.me/5575998479873" target="_blank"
+                        class="mt-4 rounded-full bg-white px-6 py-3 text-sm font-extrabold text-[#C85E6C] shadow-lg hover:scale-105 active:scale-95 transition-all">
+                        Falar com a Filó
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- Divisória Floral 'teste.png' (Header) -->
+            <div id="header-divider"
+                class="absolute left-1/2 bottom-0 w-full -translate-x-1/2 translate-y-1/2 z-50 pointer-events-none select-none flex justify-center">
+                <img src="assets/images/teste.png" alt="Divisória Floral"
+                    class="w-auto min-w-[1200px] md:w-full md:min-w-0 h-auto mix-blend-multiply" />
+            </div>
+        </header>
+
+        <main class="mx-auto max-w-6xl px-4 pb-16">
+            <section id="inicio" class="pt-12 scroll-mt-24">
+                <div
+                    class="rounded-[32px] bg-[#E9C8D0]/70 p-6 shadow-[0_10px_35px_rgba(0,0,0,0.15)] backdrop-blur-sm ring-1 ring-white/20 md:p-10">
+                    <div class="grid items-center gap-8 md:grid-cols-2">
+
+                        <div
+                            class="overflow-hidden rounded-2xl bg-white/10 aspect-square flex items-center justify-center">
+                            <img src="assets/images/Logo.jpeg" alt="Logo Flores da Filó" class="w-full object-cover" />
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="h-[2px] w-10 rounded-full bg-[#C85E6C]"></span>
+                                <span class="text-xs font-semibold tracking-widest text-[#7B2E43]/80 uppercase">Seja
+                                    Bem-Vindo</span>
+                            </div>
+
+                            <h1 class="text-3xl font-extrabold leading-tight text-[#1E2430] md:text-5xl">Sobre a
+                                Flores <br class="hidden md:block" />da Filó</h1>
+
+                            <p class="max-w-prose text-lg leading-relaxed text-[#2C3444]/80 md:text-xl">
+                                A Flores da Filó nasceu do amor que eu, Maísa, e minha mãe, Adriana, sempre tivemos
+                                pelas flores. Para nós, cada buquê carrega
+                                carinho, significado e a intenção de tornar momentos ainda mais especiais. O nome da
+                                loja é uma homenagem a Santa Filomena,
+                                representando fé, delicadeza e significado — exatamente o que queremos transmitir em
+                                cada detalhe.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="mimos" class="reveal mt-10 scroll-mt-24">
+                <div
+                    class="rounded-[32px] bg-[#E9C8D0]/70 p-6 shadow-[0_10px_35px_rgba(0,0,0,0.15)] backdrop-blur-sm ring-1 ring-white/20 md:p-10">
+                    <div class="flex items-start gap-3">
+                        <div
+                            class="mt-1 flex h-8 w-8 items-center justify-center rounded-lg bg-white/30 ring-1 ring-white/30 overflow-hidden">
+                            <img src="assets/images/flower.png" alt="Ícone Flor" class="h-5 w-5 object-contain" />
+                        </div>
+
+                        <div>
+                            <h2 class="text-4xl font-extrabold text-[#1E2430]">Nossos Mimos</h2>
+                            <p class="mt-1 text-lg font-semibold text-[#2C3444]/70">Uma seleção especial para encantar
+                                quem você ama</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 grid gap-8 md:grid-cols-3">
+                        <div class="space-y-4">
+                            <h3 class="text-lg font-extrabold text-[#1E2430] uppercase tracking-wider">Buquês</h3>
+
+                            <div class="grid gap-4">
+                                <article
+                                    class="group overflow-hidden rounded-2xl bg-white/25 ring-1 ring-white/30 transition-all hover:bg-white/40">
+                                    <div class="aspect-[4/3] overflow-hidden p-2">
+                                        <img src="assets/images/buque normal 2 rosa vermelha.jpeg"
+                                            class="h-full w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-110" />
+                                    </div>
+                                    <div class="p-3">
+                                        <p class="text-base font-semibold text-[#2C3444]/80">Buquês Prontos</p>
+                                    </div>
+                                </article>
+
+                                <article
+                                    class="group overflow-hidden rounded-2xl bg-white/25 ring-1 ring-white/30 transition-all hover:bg-white/40">
+                                    <div class="aspect-[4/3] overflow-hidden p-2">
+                                        <img src="assets/images/buque de dinheiro 4.jpeg"
+                                            class="h-full w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-110" />
+                                    </div>
+                                    <div class="p-3">
+                                        <p class="text-base font-semibold text-[#2C3444]/80">Buquê de Dinheiro</p>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <button
+                                class="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#C85E6C] px-5 py-3 text-lg font-bold text-white shadow-sm ring-1 ring-white/20 hover:bg-[#d26a78] transition-all hover:scale-[1.02]">
+                                Ver mais →
+                            </button>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h3 class="text-lg font-extrabold text-[#1E2430] uppercase tracking-wider">Arranjos</h3>
+
+                            <div class="grid gap-4">
+                                <article
+                                    class="group overflow-hidden rounded-2xl bg-white/25 ring-1 ring-white/30 transition-all hover:bg-white/40">
+                                    <div class="aspect-[4/3] overflow-hidden p-2">
+                                        <img src="assets/images/arranjo laranja 1.jpeg"
+                                            class="h-full w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-110" />
+                                    </div>
+                                    <div class="p-3">
+                                        <p class="text-base font-semibold text-[#2C3444]/80">Arranjos Prontos</p>
+                                    </div>
+                                </article>
+
+                                <article
+                                    class="group overflow-hidden rounded-2xl bg-white/25 ring-1 ring-white/30 transition-all hover:bg-white/40">
+                                    <div class="aspect-[4/3] overflow-hidden p-2">
+                                        <img src="assets/images/arranjo vermelho 1.jpeg"
+                                            class="h-full w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-110" />
+                                    </div>
+                                    <div class="p-3">
+                                        <p class="text-base font-semibold text-[#2C3444]/80">Arranjos Personalizados</p>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <button
+                                class="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#C85E6C] px-5 py-3 text-lg font-bold text-white shadow-sm ring-1 ring-white/20 hover:bg-[#d26a78] transition-all hover:scale-[1.02]">
+                                Ver mais →
+                            </button>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h3 class="text-lg font-extrabold text-[#1E2430] uppercase tracking-wider">Cestas</h3>
+
+                            <div class="grid gap-4">
+                                <article
+                                    class="group overflow-hidden rounded-2xl bg-white/25 ring-1 ring-white/30 transition-all hover:bg-white/40">
+                                    <div class="aspect-[4/3] overflow-hidden p-2">
+                                        <img src="assets/images/caixa presente rosa vermelha 2.jpeg"
+                                            class="h-full w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-110" />
+                                    </div>
+                                    <div class="p-3">
+                                        <p class="text-base font-semibold text-[#2C3444]/80">Cestas Prontas</p>
+                                    </div>
+                                </article>
+
+                                <article
+                                    class="group overflow-hidden rounded-2xl bg-white/25 ring-1 ring-white/30 transition-all hover:bg-white/40">
+                                    <div class="aspect-[4/3] overflow-hidden p-2">
+                                        <img src="assets/images/caixa rosa vermelha 1 santo casal.jpeg"
+                                            class="h-full w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-110" />
+                                    </div>
+                                    <div class="p-3">
+                                        <p class="text-base font-semibold text-[#2C3444]/80">Caixas Personalizadas</p>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <button
+                                class="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#C85E6C] px-5 py-3 text-lg font-bold text-white shadow-sm ring-1 ring-white/20 hover:bg-[#d26a78] transition-all hover:scale-[1.02]">
+                                Ver mais →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="personalizados" class="reveal mt-10 scroll-mt-24">
+                <div
+                    class="rounded-[32px] bg-[#E9C8D0]/70 p-6 shadow-[0_10px_35px_rgba(0,0,0,0.15)] backdrop-blur-sm ring-1 ring-white/20 md:p-10">
+                    <div class="grid gap-8 md:grid-cols-3 md:items-center">
+                        <div class="md:col-span-1">
+                            <h3 class="text-3xl font-extrabold text-[#1E2430]">Deseja algo exclusivo?</h3>
+                            <p class="mt-2 text-lg leading-relaxed text-[#2C3444]/75">
+                                Criamos produtos personalizados para o seu momento especial. Cada detalhe é pensado para
+                                refletir um sentimento ou personalidade.
+                            </p>
+
+                            <a href="#"
+                                class="mt-5 inline-flex items-center justify-center rounded-full bg-[#C85E6C] px-6 py-3 text-base font-bold text-white shadow-sm ring-1 ring-white/20 hover:bg-[#d26a78] transition-all hover:scale-105">
+                                Falar com a Filó
+                            </a>
+                        </div>
+
+                        <div class="grid gap-4 md:col-span-2 md:grid-cols-2">
+                            <div
+                                class="rounded-2xl bg-white/25 p-5 ring-1 ring-white/30 backdrop-blur-sm transition-all hover:bg-white/30">
+                                <div class="flex items-start gap-3">
+                                    <div
+                                        class="mt-0.5 flex h-9 w-9 items-center justify-center rounded-xl bg-white/30 ring-1 ring-white/30">
+                                        <span class="text-[#7B2E43]">❀</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-base font-extrabold text-[#1E2430]">Escolha as Flores</p>
+                                        <p class="mt-1 text-sm leading-relaxed text-[#2C3444]/75">Trabalhamos com as
+                                            melhores
+                                            espécies da estação.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="rounded-2xl bg-white/25 p-5 ring-1 ring-white/30 backdrop-blur-sm transition-all hover:bg-white/30">
+                                <div class="flex items-start gap-3">
+                                    <div
+                                        class="mt-0.5 flex h-9 w-9 items-center justify-center rounded-xl bg-white/30 ring-1 ring-white/30">
+                                        <span class="text-[#7B2E43]">⟡</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-base font-extrabold text-[#1E2430]">Defina o Estilo</p>
+                                        <p class="mt-1 text-sm leading-relaxed text-[#2C3444]/75">Do rústico ao
+                                            sofisticado,
+                                            respeitamos o seu gosto.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer id="contato" class="mt-10 bg-[#E9A6B2]/70 backdrop-blur-md relative z-20 scroll-mt-24">
+            <!-- Divisória Floral 'teste.png' (Tela Completa) -->
+            <div
+                class="absolute left-1/2 top-0 w-full -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none select-none flex justify-center">
+                <img src="assets/images/teste.png" alt="Divisória Floral"
+                    class="w-auto min-w-[1200px] md:w-full md:min-w-0 h-auto mix-blend-multiply" />
+            </div>
+
+            <div class="mx-auto max-w-6xl px-4 py-10">
+                <div class="grid gap-8 md:gap-12 md:grid-cols-2 md:items-start text-center md:text-left">
+                    <div class="space-y-4 flex flex-col items-center md:items-start">
+                        <div class="flex items-center gap-3">
+                            <div class="h-10 w-10 overflow-hidden rounded-full bg-white/60 ring-1 ring-white/40">
+                                <img src="assets/images/Logo.jpeg" class="h-full w-full object-cover" />
+                            </div>
+                            <p class="text-lg md:text-xl font-extrabold text-white/90">Flores da Filó</p>
+                        </div>
+
+                        <p class="text-base md:text-lg leading-relaxed text-white/75 max-w-sm">
+                            Levando a beleza e o frescor da natureza para a sua casa e para os seus momentos mais
+                            importantes.
+                        </p>
+                    </div>
+
+                    <div
+                        class="space-y-4 flex flex-col items-center md:items-start md:border-l md:border-white/10 md:pl-12">
+                        <p class="text-lg md:text-xl font-extrabold text-white/90 uppercase tracking-wider">Contato</p>
+
+                        <ul class="space-y-3 text-base md:text-lg text-white/80">
+                            <li class="flex items-center gap-2 justify-center md:justify-start">
+                                <span class="opacity-70">☎</span>
+                                <span>(75) 99847-9873</span>
+                            </li>
+
+                            <li class="flex items-center gap-2 justify-center md:justify-start">
+                                <span class="opacity-70">◎</span>
+                                <span>@floresdafilo</span>
+                            </li>
+
+                            <li class="flex items-center gap-2 justify-center md:justify-start">
+                                <span class="opacity-70">⌁</span>
+                                <span>Paripiranga - Bahia</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-8 border-t border-white/20 pt-6 text-center">
+                    <p class="text-sm md:text-base text-white/70 uppercase tracking-widest">© 2026 Flores da Filó. Todos
+                        os
+                        direitos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Menu Mobile Logic (Dropdown)
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const headerDivider = document.getElementById('header-divider');
+        const navBg = document.getElementById('nav-bg');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            const isOpen = mobileMenu.style.maxHeight && mobileMenu.style.maxHeight !== '0px';
+
+            if (!isOpen) {
+                mobileMenu.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    const menuHeight = mobileMenu.scrollHeight;
+                    mobileMenu.style.maxHeight = '500px';
+                    mobileMenu.style.opacity = '1';
+
+                    if (navBg) {
+                        navBg.style.height = 'calc(100% + ' + menuHeight + 'px)';
+                    }
+
+                    if (headerDivider) {
+                        headerDivider.style.transform = 'translate(-50%, calc(50% + ' + menuHeight + 'px))';
+                    }
+                });
+            } else {
+                mobileMenu.style.maxHeight = '0px';
+                mobileMenu.style.opacity = '0';
+
+                if (navBg) {
+                    navBg.style.height = '100%';
+                }
+
+                if (headerDivider) {
+                    headerDivider.style.transform = 'translate(-50%, 50%)';
+                }
+            }
+        }
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', toggleMenu);
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', toggleMenu);
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>
