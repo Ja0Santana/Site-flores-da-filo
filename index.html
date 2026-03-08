@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flores da Filó</title>
-    <link rel="icon" type="image/jpeg" href="assets/images/Logo.jpeg" class="rounded-sm" />
+    <link rel="icon" type="image/jpeg" href="assets/images/landing-page/Logo.jpeg" class="rounded-sm" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,7 +41,6 @@
             transform: translateY(0);
         }
 
-        /* Otimização de Animação: Fica pronto desde o primeiro refresh */
         #header-divider {
             transition: transform 0.24s ease-in-out;
             will-change: transform;
@@ -53,6 +52,14 @@
 
         #nav-bg {
             transition: height 0.24s ease-in-out;
+        }
+
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .fade-image {
+            transition: opacity 0.6s ease-in-out;
         }
     </style>
 </head>
@@ -70,7 +77,8 @@
 
                 <div class="flex items-center gap-3">
                     <div class="h-10 w-10 overflow-hidden rounded-full bg-white/20 ring-1 ring-white/30">
-                        <img src="assets/images/Logo.jpeg" alt="Flores da Filó" class="h-full w-full object-cover" />
+                        <img src="assets/images/landing-page/Logo.jpeg" alt="Flores da Filó"
+                            class="h-full w-full object-cover" />
                     </div>
                     <span class="text-base font-extrabold text-white">Flores da Filó</span>
                 </div>
@@ -122,7 +130,7 @@
 
             <div id="header-divider"
                 class="absolute left-1/2 bottom-0 w-full -translate-x-1/2 translate-y-1/2 z-50 pointer-events-none select-none flex justify-center">
-                <img src="assets/images/teste.png" alt="Divisória Floral"
+                <img src="assets/images/landing-page/teste.png" alt="Divisória Floral"
                     class="w-auto min-w-[1200px] md:w-full md:min-w-0 h-auto mix-blend-multiply" />
             </div>
         </header>
@@ -135,7 +143,8 @@
 
                         <div
                             class="overflow-hidden rounded-2xl bg-white/10 aspect-square flex items-center justify-center">
-                            <img src="assets/images/Logo.jpeg" alt="Logo Flores da Filó" class="w-full object-cover" />
+                            <img src="assets/images/landing-page/Logo.jpeg" alt="Logo Flores da Filó"
+                                class="w-full object-cover" />
                         </div>
 
                         <div class="space-y-4">
@@ -167,7 +176,8 @@
                     <div class="flex items-start gap-3">
                         <div
                             class="mt-1 flex h-8 w-8 items-center justify-center rounded-lg bg-white/30 ring-1 ring-white/30 overflow-hidden">
-                            <img src="assets/images/flower.png" alt="Ícone Flor" class="h-5 w-5 object-contain" />
+                            <img src="assets/images/landing-page/flower.png" alt="Ícone Flor"
+                                class="h-5 w-5 object-contain" />
                         </div>
 
                         <div>
@@ -185,7 +195,7 @@
                                 <article
                                     class="group overflow-hidden rounded-2xl bg-white/25 ring-1 ring-white/30 transition-all hover:bg-white/40">
                                     <div class="aspect-[4/3] overflow-hidden p-2">
-                                        <img src="assets/images/buque normal 2 rosa vermelha.jpeg"
+                                        <img src="assets/images/modals/buque normal 2 rosa vermelha.jpeg"
                                             class="h-full w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-110" />
                                     </div>
                                     <div class="p-3">
@@ -196,7 +206,7 @@
                                 <article
                                     class="group overflow-hidden rounded-2xl bg-white/25 ring-1 ring-white/30 transition-all hover:bg-white/40">
                                     <div class="aspect-[4/3] overflow-hidden p-2">
-                                        <img src="assets/images/buque de dinheiro 4.jpeg"
+                                        <img src="assets/images/modals/buque de dinheiro 4.jpeg"
                                             class="h-full w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-110" />
                                     </div>
                                     <div class="p-3">
@@ -205,7 +215,7 @@
                                 </article>
                             </div>
 
-                            <button
+                            <button id="btn-buques"
                                 class="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#C85E6C] px-5 py-3 text-lg font-bold text-white shadow-sm ring-1 ring-white/20 hover:bg-[#d26a78] transition-all hover:scale-[1.02]">
                                 Ver mais →
                             </button>
@@ -218,7 +228,7 @@
                                 <article
                                     class="group overflow-hidden rounded-2xl bg-white/25 ring-1 ring-white/30 transition-all hover:bg-white/40">
                                     <div class="aspect-[4/3] overflow-hidden p-2">
-                                        <img src="assets/images/arranjo laranja 1.jpeg"
+                                        <img src="assets/images/modals/arranjo laranja 1.jpeg"
                                             class="h-full w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-110" />
                                     </div>
                                     <div class="p-3">
@@ -229,7 +239,7 @@
                                 <article
                                     class="group overflow-hidden rounded-2xl bg-white/25 ring-1 ring-white/30 transition-all hover:bg-white/40">
                                     <div class="aspect-[4/3] overflow-hidden p-2">
-                                        <img src="assets/images/arranjo vermelho 1.jpeg"
+                                        <img src="assets/images/modals/arranjo vermelho 1.jpeg"
                                             class="h-full w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-110" />
                                     </div>
                                     <div class="p-3">
@@ -238,7 +248,7 @@
                                 </article>
                             </div>
 
-                            <button
+                            <button id="btn-arranjos"
                                 class="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#C85E6C] px-5 py-3 text-lg font-bold text-white shadow-sm ring-1 ring-white/20 hover:bg-[#d26a78] transition-all hover:scale-[1.02]">
                                 Ver mais →
                             </button>
@@ -251,18 +261,18 @@
                                 <article
                                     class="group overflow-hidden rounded-2xl bg-white/25 ring-1 ring-white/30 transition-all hover:bg-white/40">
                                     <div class="aspect-[4/3] overflow-hidden p-2">
-                                        <img src="assets/images/caixa presente rosa vermelha 2.jpeg"
+                                        <img src="assets/images/modals/caixa presente rosa vermelha 2.jpeg"
                                             class="h-full w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-110" />
                                     </div>
                                     <div class="p-3">
-                                        <p class="text-base font-semibold text-[#2C3444]/80">Cestas Prontas</p>
+                                        <p class="text-base font-semibold text-[#2C3444]/80">Caixas Prontas</p>
                                     </div>
                                 </article>
 
                                 <article
                                     class="group overflow-hidden rounded-2xl bg-white/25 ring-1 ring-white/30 transition-all hover:bg-white/40">
                                     <div class="aspect-[4/3] overflow-hidden p-2">
-                                        <img src="assets/images/caixa rosa vermelha 1 santo casal.jpeg"
+                                        <img src="assets/images/modals/caixa rosa vermelha 1 santo casal.jpeg"
                                             class="h-full w-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-110" />
                                     </div>
                                     <div class="p-3">
@@ -271,7 +281,7 @@
                                 </article>
                             </div>
 
-                            <button
+                            <button id="btn-cestas"
                                 class="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#C85E6C] px-5 py-3 text-lg font-bold text-white shadow-sm ring-1 ring-white/20 hover:bg-[#d26a78] transition-all hover:scale-[1.02]">
                                 Ver mais →
                             </button>
@@ -336,10 +346,116 @@
             </section>
         </main>
 
+        <div id="modal-container" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+            <div id="modal-overlay"
+                class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 opacity-0"></div>
+
+            <div id="modal-buques"
+                class="modal-content relative w-full hide-scrollbar max-w-4xl min-h-[500px] rounded-[32px] bg-[#E3BDC7] shadow-2xl ring-1 ring-white/30 transition-all duration-300 scale-95 opacity-0 hidden overflow-hidden flex flex-col justify-center">
+                <button
+                    class="close-modal absolute top-8 right-8 z-50 text-[#7B2E43] hover:scale-110 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <button id="prev-item-buques"
+                    class="prev-btn absolute left-6 top-1/2 -translate-y-1/2 z-40 h-12 w-12 flex items-center justify-center rounded-full bg-white/30 text-[#7B2E43] hover:bg-white/50 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="next-item-buques"
+                    class="next-btn absolute right-6 top-1/2 -translate-y-1/2 z-40 h-12 w-12 flex items-center justify-center rounded-full bg-white/30 text-[#7B2E43] hover:bg-white/50 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+
+                <div class="carousel-viewport overflow-hidden w-full h-full">
+                    <div id="track-buques"
+                        class="carousel-track flex transition-transform duration-500 ease-in-out h-full w-full">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arranjos Modal -->
+            <div id="modal-arranjos"
+                class="modal-content relative w-full hide-scrollbar max-w-4xl min-h-[500px] rounded-[32px] bg-[#E3BDC7] shadow-2xl ring-1 ring-white/30 transition-all duration-300 scale-95 opacity-0 hidden overflow-hidden flex flex-col justify-center">
+                <button
+                    class="close-modal absolute top-8 right-8 z-50 text-[#7B2E43] hover:scale-110 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <button id="prev-item-arranjos"
+                    class="prev-btn absolute left-6 top-1/2 -translate-y-1/2 z-40 h-12 w-12 flex items-center justify-center rounded-full bg-white/30 text-[#7B2E43] hover:bg-white/50 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="next-item-arranjos"
+                    class="next-btn absolute right-6 top-1/2 -translate-y-1/2 z-40 h-12 w-12 flex items-center justify-center rounded-full bg-white/30 text-[#7B2E43] hover:bg-white/50 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+
+                <div class="carousel-viewport overflow-hidden w-full h-full">
+                    <div id="track-arranjos"
+                        class="carousel-track flex transition-transform duration-500 ease-in-out h-full w-full">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cestas Modal -->
+            <div id="modal-cestas"
+                class="modal-content relative w-full hide-scrollbar max-w-4xl min-h-[500px] rounded-[32px] bg-[#E3BDC7] shadow-2xl ring-1 ring-white/30 transition-all duration-300 scale-95 opacity-0 hidden overflow-hidden flex flex-col justify-center">
+                <button
+                    class="close-modal absolute top-8 right-8 z-50 text-[#7B2E43] hover:scale-110 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <button id="prev-item-cestas"
+                    class="prev-btn absolute left-6 top-1/2 -translate-y-1/2 z-40 h-12 w-12 flex items-center justify-center rounded-full bg-white/30 text-[#7B2E43] hover:bg-white/50 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="next-item-cestas"
+                    class="next-btn absolute right-6 top-1/2 -translate-y-1/2 z-40 h-12 w-12 flex items-center justify-center rounded-full bg-white/30 text-[#7B2E43] hover:bg-white/50 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+
+                <div class="carousel-viewport overflow-hidden w-full h-full">
+                    <div id="track-cestas"
+                        class="carousel-track flex transition-transform duration-500 ease-in-out h-full w-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <footer id="contato" class="mt-10 bg-[#E9A6B2]/70 backdrop-blur-md relative z-20 scroll-mt-24">
             <div
                 class="absolute left-1/2 top-0 w-full -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none select-none flex justify-center">
-                <img src="assets/images/teste.png" alt="Divisória Floral"
+                <img src="assets/images/landing-page/teste.png" alt="Divisória Floral"
                     class="w-auto min-w-[1200px] md:w-full md:min-w-0 h-auto mix-blend-multiply" />
             </div>
 
@@ -348,7 +464,7 @@
                     <div class="space-y-4 flex flex-col items-center md:items-start">
                         <div class="flex items-center gap-3">
                             <div class="h-10 w-10 overflow-hidden rounded-full bg-white/60 ring-1 ring-white/40">
-                                <img src="assets/images/Logo.jpeg" class="h-full w-full object-cover" />
+                                <img src="assets/images/landing-page/Logo.jpeg" class="h-full w-full object-cover" />
                             </div>
                             <p class="text-lg md:text-xl font-extrabold text-white/90">Flores da Filó</p>
                         </div>
@@ -475,6 +591,239 @@
             });
         }
 
+
+        // Modal Logic
+        const modalContainer = document.getElementById('modal-container');
+        const modalOverlay = document.getElementById('modal-overlay');
+        const modals = {
+            'btn-buques': document.getElementById('modal-buques'),
+            'btn-arranjos': document.getElementById('modal-arranjos'),
+            'btn-cestas': document.getElementById('modal-cestas')
+        };
+
+        function openModal(id) {
+            const modal = modals[id];
+            if (!modal) return;
+
+            modalContainer.classList.remove('hidden');
+            modalContainer.classList.add('flex');
+
+            // Show overlay
+            setTimeout(() => {
+                modalOverlay.style.opacity = '1';
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.style.opacity = '1';
+                    modal.style.transform = 'scale(1)';
+                }, 10);
+            }, 10);
+        }
+
+        function closeModal() {
+            modalOverlay.style.opacity = '0';
+            Object.values(modals).forEach(modal => {
+                modal.style.opacity = '0';
+                modal.style.transform = 'scale(0.95)';
+            });
+
+            setTimeout(() => {
+                modalContainer.classList.add('hidden');
+                modalContainer.classList.remove('flex');
+                Object.values(modals).forEach(modal => modal.classList.add('hidden'));
+            }, 300);
+        }
+
+        Object.keys(modals).forEach(btnId => {
+            const btn = document.getElementById(btnId);
+            if (btn) {
+                btn.addEventListener('click', () => openModal(btnId));
+            }
+        });
+
+        document.querySelectorAll('.close-modal').forEach(btn => {
+            btn.addEventListener('click', closeModal);
+        });
+
+        modalOverlay.addEventListener('click', closeModal);
+
+
+        const bouquetItems = [
+            {
+                name: "Buquê Romance",
+                tag: "Buquês Prontos",
+                details: ["12 Rosas Rosa Premium", "Ramos de Eucalipto Prateado", "Papel Translúcido Rosa", "Fita de Cetim Luxo"],
+                imageFront: "assets/images/fotos_sites/buque romance 5.jpeg", imageBack: "assets/images/fotos_sites/buque romance 4.jpeg"
+            },
+            {
+                name: "Buquê Amor Próspero",
+                tag: "Buquês de Dinheiro",
+                details: ["6 Girassóis Grandes", "Margaridas Amarelas", "Solidago Decorativo", "Papel Kraft Rústico"],
+                imageFront: "assets/images/fotos_sites/buque amor prospero 3.jpeg", imageBack: "assets/images/fotos_sites/buque amor prospero 4.jpeg"
+            },
+            {
+                name: "Rosa do Amor",
+                tag: "Rosa Única",
+                details: ["Lavanda Desidratada", "Ranúnculos Brancos", "Folhas de Dusty Miller", "Embalagem de Linho"],
+                imageFront: "assets/images/fotos_sites/rosa do amor 2.jpeg", imageBack: "assets/images/fotos_sites/rosa do amor 5.jpeg"
+            }
+        ];
+
+        const arranjoItems = [
+            {
+                name: "Flor que Permanece",
+                tag: "Arranjos Prontos",
+                details: ["Gérberas Coloridas", "Folhagem de Avenca", "Vaso de Vidro Minimalista", "Água com Nutrientes"],
+                imageFront: "assets/images/fotos_sites/flor que permanece 2.jpeg", imageBack: "assets/images/fotos_sites/flor que permanece 3.jpeg"
+            },
+            {
+                name: "Arranjo Harmonia",
+                tag: "Arranjos Prontos",
+                details: ["Gérberas Coloridas", "Folhagem de Avenca", "Vaso de Vidro Minimalista", "Água com Nutrientes"],
+                imageFront: "assets/images/fotos_sites/arranjo harmonia.jpeg", imageBack: "assets/images/fotos_sites/arranjo harmonia.jpeg"
+            },
+            {
+                name: "Arranjo Paixão Vibrante",
+                tag: "Arranjos Personalizados",
+                details: ["Gérberas Coloridas", "Folhagem de Avenca", "Vaso de Vidro Minimalista", "Água com Nutrientes"],
+                imageFront: "assets/images/fotos_sites/paixao vibrante.jpeg", imageBack: "assets/images/fotos_sites/paixao vibrante.jpeg"
+            }
+        ];
+
+        const cestaItems = [
+            {
+                name: "Caixa Amor em Flores",
+                tag: "Caixas Personalizadas",
+                details: ["Mini Orquídea", "Pães Artesanais", "Frutas Selecionadas", "Cesta de Vime Natural"],
+                imageFront: "assets/images/fotos_sites/caixa amor em flores 1.jpeg", imageBack: "assets/images/fotos_sites/caixa amor em flores 1.jpeg"
+            },
+            {
+                name: "Caixa Fé com Flores",
+                tag: "Caixas Personalizadas",
+                details: ["Mini Orquídea", "Pães Artesanais", "Frutas Selecionadas", "Cesta de Vime Natural"],
+                imageFront: "assets/images/fotos_sites/caixa fé com flores 3.jpeg", imageBack: "assets/images/fotos_sites/caixa fé com flores 2.jpeg"
+            },
+            {
+                name: "Caixa Presente Especial",
+                tag: "Caixas Prontas",
+                details: ["Mini Orquídea", "Pães Artesanais", "Frutas Selecionadas", "Cesta de Vime Natural"],
+                imageFront: "assets/images/fotos_sites/caixa presente especial 2.jpeg", imageBack: "assets/images/fotos_sites/caixa presente especial 1.jpeg"
+            }
+        ];
+
+        const carouselState = {
+            buques: { index: 1, items: bouquetItems, trackId: 'track-buques', isMoving: false },
+            arranjos: { index: 1, items: arranjoItems, trackId: 'track-arranjos', isMoving: false },
+            cestas: { index: 1, items: cestaItems, trackId: 'track-cestas', isMoving: false }
+        };
+
+        function getItemHtml(item, type, idx) {
+            return `
+                <div class="carousel-item flex-shrink-0 w-full h-full flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-16 items-center p-8 md:p-16">
+                    <div class="relative w-full aspect-square group overflow-hidden rounded-2xl shadow-lg border border-white/20 cursor-pointer img-toggle">
+                        <img src="${item.imageFront}" class="absolute inset-0 w-full h-full object-cover fade-image z-10 front-img" />
+                        <img src="${item.imageBack}" class="absolute inset-0 w-full h-full object-cover fade-image opacity-0 z-0 back-img" />
+
+                    </div>
+                    <div class="w-full space-y-4 md:space-y-6 text-left">
+                        <div class="space-y-2">
+                            ${item.tag ? `<div class="inline-block px-3 py-1 bg-[#7B2E43]/10 text-[#7B2E43] text-xs font-bold rounded-full uppercase tracking-wider">${item.tag}</div>` : ''}
+                            <h3 class="text-3xl md:text-4xl font-extrabold text-[#7B2E43] leading-tight">${item.name}</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <p class="text-[#7B2E43] font-bold text-sm uppercase tracking-widest border-b border-[#7B2E43]/20 pb-1">Composição</p>
+                            <ul class="space-y-2 text-base md:text-lg text-[#2C3444]/80">
+                                ${item.details.map(d => `<li><span class="text-[#7B2E43] mr-2">✦</span> ${d}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/5575998204593?text=Olá, gostaria de encomendar o ${item.name}!" target="_blank" class="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#7B2E43] px-6 py-3 md:py-4 text-lg md:text-xl font-bold text-white shadow-lg hover:scale-105 active:scale-95 transition-all">
+                            <span>Encomende o seu</span> <span class="text-xl">❀</span>
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderTrack(type) {
+            const state = carouselState[type];
+            const track = document.getElementById(state.trackId);
+            const items = state.items;
+
+            // Add clones at start and end
+            const lastClone = items[items.length - 1];
+            const firstClone = items[0];
+            const trackItems = [lastClone, ...items, firstClone];
+
+            track.innerHTML = trackItems.map((item, idx) => getItemHtml(item, type, idx)).join('');
+
+            track.querySelectorAll('.img-toggle').forEach(container => {
+                const front = container.querySelector('.front-img');
+                const back = container.querySelector('.back-img');
+                let isFlipped = false;
+                const toggle = (showBack) => {
+                    isFlipped = showBack;
+                    front.classList.toggle('opacity-0', showBack);
+                    back.classList.toggle('opacity-0', !showBack);
+                    back.style.zIndex = showBack ? '10' : '0';
+                    front.style.zIndex = showBack ? '0' : '10';
+                };
+                container.addEventListener('click', () => toggle(!isFlipped));
+                container.addEventListener('mouseenter', () => { if (window.innerWidth > 768) toggle(true); });
+                container.addEventListener('mouseleave', () => { if (window.innerWidth > 768) toggle(false); });
+            });
+
+            // Transition end logic for seamless loop
+            track.addEventListener('transitionend', () => {
+                state.isMoving = false;
+                if (state.index === 0) {
+                    track.style.transition = 'none';
+                    state.index = items.length;
+                    updatePosition(type);
+                    setTimeout(() => track.style.transition = '', 20);
+                } else if (state.index === items.length + 1) {
+                    track.style.transition = 'none';
+                    state.index = 1;
+                    updatePosition(type);
+                    setTimeout(() => track.style.transition = '', 20);
+                }
+            });
+        }
+
+        function updatePosition(type) {
+            const state = carouselState[type];
+            const track = document.getElementById(state.trackId);
+            track.style.transform = `translateX(-${state.index * 100}%)`;
+        }
+
+        ['buques', 'arranjos', 'cestas'].forEach(type => {
+            const nextBtn = document.getElementById(`next-item-${type}`);
+            const prevBtn = document.getElementById(`prev-item-${type}`);
+            const state = carouselState[type];
+
+            if (nextBtn) nextBtn.addEventListener('click', () => {
+                if (state.isMoving) return;
+                state.isMoving = true;
+                state.index++;
+                updatePosition(type);
+            });
+
+            if (prevBtn) prevBtn.addEventListener('click', () => {
+                if (state.isMoving) return;
+                state.isMoving = true;
+                state.index--;
+                updatePosition(type);
+            });
+
+            const openBtn = document.getElementById(`btn-${type === 'buques' ? 'buques' : type}`);
+            if (openBtn) openBtn.addEventListener('click', () => {
+                state.index = 1;
+                state.isMoving = false;
+                renderTrack(type);
+                const track = document.getElementById(state.trackId);
+                track.style.transition = 'none';
+                updatePosition(type);
+                setTimeout(() => track.style.transition = '', 50);
+            });
+        });
 
     </script>
 </body>
