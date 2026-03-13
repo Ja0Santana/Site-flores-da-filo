@@ -85,6 +85,15 @@
             animation-play-state: paused;
         }
 
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
     </style>
 </head>
 
@@ -421,7 +430,7 @@
                 class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 opacity-0"></div>
 
             <div id="modal-buques"
-                class="modal-content relative w-full hide-scrollbar max-w-4xl max-h-[90vh] overflow-y-auto rounded-[32px] bg-[#E3BDC7] shadow-2xl ring-1 ring-white/30 transition-all duration-300 scale-95 opacity-0 hidden flex flex-col justify-start">
+                class="modal-content relative w-full hide-scrollbar overflow-x-hidden max-w-4xl max-h-[90vh] overflow-y-auto rounded-[32px] bg-[#E3BDC7] shadow-2xl ring-1 ring-white/30 transition-all duration-300 scale-95 opacity-0 hidden flex flex-col justify-start">
                 <button
                     class="close-modal absolute top-2 right-2 md:top-8 md:right-8 z-50 text-[#7B2E43] hover:scale-110 transition-transform">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
@@ -446,7 +455,7 @@
                     </svg>
                 </button>
 
-                <div class="carousel-viewport w-full">
+                <div class="carousel-viewport w-full overflow-hidden">
                     <div id="track-buques"
                         class="carousel-track flex transition-transform duration-500 ease-in-out w-full">
                     </div>
@@ -455,7 +464,7 @@
 
 
             <div id="modal-arranjos"
-                class="modal-content relative w-full hide-scrollbar max-w-4xl max-h-[90vh] overflow-y-auto rounded-[32px] bg-[#E3BDC7] shadow-2xl ring-1 ring-white/30 transition-all duration-300 scale-95 opacity-0 hidden flex flex-col justify-start">
+                class="modal-content relative w-full hide-scrollbar overflow-x-hidden max-w-4xl max-h-[90vh] overflow-y-auto rounded-[32px] bg-[#E3BDC7] shadow-2xl ring-1 ring-white/30 transition-all duration-300 scale-95 opacity-0 hidden flex flex-col justify-start">
                 <button
                     class="close-modal absolute top-2 right-2 md:top-8 md:right-8 z-50 text-[#7B2E43] hover:scale-110 transition-transform">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
@@ -480,7 +489,7 @@
                     </svg>
                 </button>
 
-                <div class="carousel-viewport w-full">
+                <div class="carousel-viewport w-full overflow-hidden">
                     <div id="track-arranjos"
                         class="carousel-track flex transition-transform duration-500 ease-in-out w-full">
                     </div>
@@ -489,7 +498,7 @@
 
 
             <div id="modal-cestas"
-                class="modal-content relative w-full hide-scrollbar max-w-4xl max-h-[90vh] overflow-y-auto rounded-[32px] bg-[#E3BDC7] shadow-2xl ring-1 ring-white/30 transition-all duration-300 scale-95 opacity-0 hidden flex flex-col justify-start">
+                class="modal-content relative w-full hide-scrollbar overflow-x-hidden max-w-4xl max-h-[90vh] overflow-y-auto rounded-[32px] bg-[#E3BDC7] shadow-2xl ring-1 ring-white/30 transition-all duration-300 scale-95 opacity-0 hidden flex flex-col justify-start">
                 <button
                     class="close-modal absolute top-2 right-2 md:top-8 md:right-8 z-50 text-[#7B2E43] hover:scale-110 transition-transform">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
@@ -514,7 +523,7 @@
                     </svg>
                 </button>
 
-                <div class="carousel-viewport w-full">
+                <div class="carousel-viewport w-full overflow-hidden">
                     <div id="track-cestas"
                         class="carousel-track flex transition-transform duration-500 ease-in-out w-full">
                     </div>
@@ -523,7 +532,7 @@
 
             <!-- Modal Decorações -->
             <div id="modal-decoracoes"
-                class="modal-content relative w-full hide-scrollbar max-w-4xl max-h-[90vh] overflow-y-auto rounded-[32px] bg-[#E3BDC7] shadow-2xl ring-1 ring-white/30 transition-all duration-300 scale-95 opacity-0 hidden flex flex-col justify-between">
+                class="modal-content relative w-full hide-scrollbar overflow-x-hidden max-w-4xl max-h-[90vh] overflow-y-auto rounded-[32px] bg-[#E3BDC7] shadow-2xl ring-1 ring-white/30 transition-all duration-300 scale-95 opacity-0 hidden flex flex-col justify-between">
                 
                 <!-- Fixed Close Button -->
                 <button
@@ -552,7 +561,7 @@
                 </button>
 
                 <!-- Track Viewport Container -->
-                <div class="carousel-viewport w-full flex-grow pt-4 md:pt-12">
+                <div class="carousel-viewport w-full overflow-hidden flex-grow pt-4 md:pt-12">
                     <div id="track-decoracoes"
                         class="carousel-track flex transition-transform duration-500 ease-in-out w-full items-center">
                     </div>
