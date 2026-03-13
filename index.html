@@ -67,6 +67,24 @@
         .fade-image {
             transition: opacity 0.6s ease-in-out;
         }
+
+        /* Continuous Scroll Animation */
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .marquee-container {
+            display: flex;
+            width: max-content;
+            animation: scroll-left 30s linear infinite;
+        }
+
+        /* Pause animation on hover for a better UX (optional but premium) */
+        .marquee-wrapper:hover .marquee-container {
+            animation-play-state: paused;
+        }
+
     </style>
 </head>
 
@@ -307,6 +325,36 @@
                             </button>
                         </div>
                     </div>
+
+                    <!-- New Decorations Section (Full Width) -->
+                    <div class="mt-12 w-full">
+                        <div class="space-y-4">
+                            <h3 class="text-lg font-extrabold text-[#1E2430] uppercase tracking-wider text-center md:text-left">Decorações</h3>
+                            
+                            <div class="w-full flex flex-col md:flex-row gap-6 items-center md:items-stretch">
+                                <!-- Slideshow Container (Continuous Marquee) -->
+                                <article class="group relative overflow-hidden rounded-2xl bg-white/25 ring-1 ring-white/30 transition-all hover:bg-white/40 w-full md:w-[60%] lg:w-[70%] aspect-video md:aspect-[21/9]">
+                                    <div class="absolute inset-0 w-full h-full marquee-wrapper overflow-hidden bg-black/5">
+                                        <div id="decor-marquee" class="marquee-container h-full">
+                                            <!-- Images will be injected here by JS -->
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <!-- Action Container -->
+                                <div class="w-full md:w-[40%] lg:w-[30%] flex flex-col justify-center space-y-4 p-4 md:p-6 bg-white/10 rounded-2xl ring-1 ring-white/20 h-full">
+                                    <p class="text-[#2C3444]/80 text-center md:text-left text-lg leading-relaxed">
+                                        Criamos projetos florais completos e exclusivos para decorar seu casamento, noivado, igreja ou evento especial com elegância e perfeição.
+                                    </p>
+                                    <button id="btn-decoracoes"
+                                        class="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#C85E6C] px-5 py-4 text-lg font-bold text-white shadow-sm ring-1 ring-white/20 hover:bg-[#d26a78] transition-all hover:scale-[1.02]">
+                                        Ver Galeria →
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
@@ -472,6 +520,52 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Modal Decorações -->
+            <div id="modal-decoracoes"
+                class="modal-content relative w-full hide-scrollbar max-w-4xl min-h-[500px] rounded-[32px] bg-[#E3BDC7] shadow-2xl ring-1 ring-white/30 transition-all duration-300 scale-95 opacity-0 hidden overflow-hidden flex flex-col justify-between">
+                
+                <!-- Fixed Close Button -->
+                <button
+                    class="close-modal absolute top-2 right-2 md:top-8 md:right-8 z-50 text-[#7B2E43] hover:scale-110 transition-transform bg-white/50 md:bg-transparent rounded-full p-2 md:p-0 backdrop-blur-sm md:backdrop-blur-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <!-- Navigation Buttons -->
+                <button id="prev-item-decoracoes"
+                    class="prev-btn absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-40 h-10 w-10 md:h-12 md:w-12 flex items-center justify-center rounded-full bg-white/60 backdrop-blur-sm text-[#7B2E43] hover:bg-white/80 transition-all shadow-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="next-item-decoracoes"
+                    class="next-btn absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-40 h-10 w-10 md:h-12 md:w-12 flex items-center justify-center rounded-full bg-white/60 backdrop-blur-sm text-[#7B2E43] hover:bg-white/80 transition-all shadow-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+
+                <!-- Track Viewport Container -->
+                <div class="carousel-viewport overflow-hidden w-full flex-grow pt-4 md:pt-12">
+                    <div id="track-decoracoes"
+                        class="carousel-track flex transition-transform duration-500 ease-in-out h-full w-full items-center">
+                    </div>
+                </div>
+
+                <!-- Fixed Bottom Button Area (Shadow removed to avoid vignette effect) -->
+                <div class="w-full bg-[#E3BDC7] p-6 pt-2 z-30 flex justify-center border-t border-white/20 mt-auto shrink-0">
+                    <a href="https://wa.me/5575998204593?text=Olá, gostaria de encomendar uma decoração!" target="_blank" 
+                        class="mx-auto inline-flex items-center justify-center gap-3 rounded-full bg-[#7B2E43] px-8 md:px-12 py-3 md:py-4 text-base md:text-xl font-bold text-white shadow-lg shadow-[#7B2E43]/30 hover:bg-[#8F3A50] hover:scale-105 active:scale-95 transition-all outline-none focus:ring-4 focus:ring-white/40">
+                        <span>Encomendar decoração</span> <span class="text-xl">❀</span>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <footer id="contato" class="mt-10 bg-[#E9A6B2]/70 backdrop-blur-md relative z-20 scroll-mt-24">
@@ -626,7 +720,8 @@
         const modals = {
             'btn-buques': document.getElementById('modal-buques'),
             'btn-arranjos': document.getElementById('modal-arranjos'),
-            'btn-cestas': document.getElementById('modal-cestas')
+            'btn-cestas': document.getElementById('modal-cestas'),
+            'btn-decoracoes': document.getElementById('modal-decoracoes')
         };
 
         function openModal(id) {
@@ -704,6 +799,18 @@
                 tag: "Buquês Personalizados",
                 details: ["10 botões de rosas vremelhas", "Folhagem", "Áster Mariana", "Tango"],
                 imageFront: "assets/images/fotos_sites/buque carinho eterno.webp", imageBack: "assets/images/fotos_sites/buque carinho eterno.webp"
+            },
+            {
+                name: "Buquê Romance Vermelho P",
+                tag: "Buquês Personalizados",
+                details: ["3 botões de rosas vremelhas", "Folhagem", "Áster Mariana", "Tango", "Caixa Ferrero Rocher"],
+                imageFront: "assets/images/fotos_sites/romance vermelho p 1.webp", imageBack: "assets/images/fotos_sites/romance vermelho p 2.webp"
+            },
+            {
+                name: "Buquê Encanto",
+                tag: "Buquês Prontos",
+                details: ["3 botões de rosas Vermelhas", "Folhagem", "Véu-de-noiva", "4 opções de embrulho"],
+                imageFront: "assets/images/fotos_sites/buque encanto.webp", imageBack: "assets/images/fotos_sites/buque encanto.webp"
             }
         ];
 
@@ -749,13 +856,45 @@
             }
         ];
 
+        // Decorações em Destaque para o banner contínuo (Escolhemos algumas fotos muito bonitas)
+        const decorImagesForMarquee = [
+            "assets/images/fotos_decoracoes/decoracao-1.webp",
+            "assets/images/fotos_decoracoes/decoracao-2.webp",
+            "assets/images/fotos_decoracoes/decoracao-5.webp",
+            "assets/images/fotos_decoracoes/decoracao-9.webp",
+            "assets/images/fotos_decoracoes/decoracao-12.webp",
+            "assets/images/fotos_decoracoes/decoracao-18.webp",
+            "assets/images/fotos_decoracoes/decoracao-22.webp",
+            "assets/images/fotos_decoracoes/decoracao-26.webp"
+        ];
+
+        const decoracaoItems = [
+            { imageFront: "assets/images/fotos_decoracoes/decoracao-3.webp" },
+            { imageFront: "assets/images/fotos_decoracoes/decoracao-4.webp" },
+            { imageFront: "assets/images/fotos_decoracoes/decoracao-8.webp" },
+            { imageFront: "assets/images/fotos_decoracoes/decoracao-11.webp" },
+            { imageFront: "assets/images/fotos_decoracoes/decoracao-15.webp" },
+            { imageFront: "assets/images/fotos_decoracoes/decoracao-19.webp" }
+        ];
+
         const carouselState = {
             buques: { index: 1, items: bouquetItems, trackId: 'track-buques', isMoving: false },
             arranjos: { index: 1, items: arranjoItems, trackId: 'track-arranjos', isMoving: false },
-            cestas: { index: 1, items: cestaItems, trackId: 'track-cestas', isMoving: false }
+            cestas: { index: 1, items: cestaItems, trackId: 'track-cestas', isMoving: false },
+            decoracoes: { index: 1, items: decoracaoItems, trackId: 'track-decoracoes', isMoving: false }
         };
 
         function getItemHtml(item, type, idx) {
+            if (type === 'decoracoes') {
+                return `
+                <div class="carousel-item flex-shrink-0 w-full h-full flex flex-col justify-center items-center px-12 md:px-20 pb-4">
+                    <div class="relative w-full max-w-3xl max-h-[65vh] mx-auto overflow-hidden rounded-[20px] border border-white/10 flex justify-center items-center">
+                        <img src="${item.imageFront}" class="w-auto h-full max-h-[65vh] object-contain" style="max-width: 100%; border-radius: 20px;" loading="lazy" />
+                    </div>
+                </div>
+                `;
+            }
+
             return `
                 <div class="carousel-item flex-shrink-0 w-full h-full flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-16 items-center p-8 md:p-16">
                     <div class="relative w-full aspect-square group overflow-hidden rounded-2xl shadow-lg border border-white/20 cursor-pointer img-toggle">
@@ -794,21 +933,24 @@
 
             track.innerHTML = trackItems.map((item, idx) => getItemHtml(item, type, idx)).join('');
 
-            track.querySelectorAll('.img-toggle').forEach(container => {
-                const front = container.querySelector('.front-img');
-                const back = container.querySelector('.back-img');
-                let isFlipped = false;
-                const toggle = (showBack) => {
-                    isFlipped = showBack;
-                    front.classList.toggle('opacity-0', showBack);
-                    back.classList.toggle('opacity-0', !showBack);
-                    back.style.zIndex = showBack ? '10' : '0';
-                    front.style.zIndex = showBack ? '0' : '10';
-                };
-                container.addEventListener('click', () => toggle(!isFlipped));
-                container.addEventListener('mouseenter', () => { if (window.innerWidth > 768) toggle(true); });
-                container.addEventListener('mouseleave', () => { if (window.innerWidth > 768) toggle(false); });
-            });
+            // A lógica de "flip" (virar a imagem) só serve para quem não é decoração, pois decoração só tem 1 foto
+            if (type !== 'decoracoes') {
+                track.querySelectorAll('.img-toggle').forEach(container => {
+                    const front = container.querySelector('.front-img');
+                    const back = container.querySelector('.back-img');
+                    let isFlipped = false;
+                    const toggle = (showBack) => {
+                        isFlipped = showBack;
+                        front.classList.toggle('opacity-0', showBack);
+                        back.classList.toggle('opacity-0', !showBack);
+                        back.style.zIndex = showBack ? '10' : '0';
+                        front.style.zIndex = showBack ? '0' : '10';
+                    };
+                    container.addEventListener('click', () => toggle(!isFlipped));
+                    container.addEventListener('mouseenter', () => { if (window.innerWidth > 768) toggle(true); });
+                    container.addEventListener('mouseleave', () => { if (window.innerWidth > 768) toggle(false); });
+                });
+            }
 
 
             track.addEventListener('transitionend', () => {
@@ -833,7 +975,7 @@
             track.style.transform = `translateX(-${state.index * 100}%)`;
         }
 
-        ['buques', 'arranjos', 'cestas'].forEach(type => {
+        ['buques', 'arranjos', 'cestas', 'decoracoes'].forEach(type => {
             const nextBtn = document.getElementById(`next-item-${type}`);
             const prevBtn = document.getElementById(`prev-item-${type}`);
             const state = carouselState[type];
@@ -863,6 +1005,26 @@
                 setTimeout(() => track.style.transition = '', 50);
             });
         });
+        // Slideshow contínuo (Marquee) para as Decorações
+        const initDecorMarquee = () => {
+            const marqueeContainer = document.getElementById('decor-marquee');
+            if (!marqueeContainer) return;
+
+            // Criar o HTML para as imagens respeitando e mostrando a foto completa na altura do container (h-full) com auto-width
+            const imagesHtml = decorImagesForMarquee.map(src => {
+                return `
+                <div class="h-full flex shrink-0 px-2 items-center justify-center border-r border-white/10">
+                    <img src="${src}" class="h-full w-auto object-contain rounded shadow-sm opacity-90 transition-all hover:opacity-100 max-w-[90vw] md:max-w-none" loading="lazy" />
+                </div>`;
+            }).join('');
+
+            // Para o scroll infinito funcionar perfeitamente, precisamos duplicar o conteúdo
+            // Assim, quando a primeira leva sair pela esquerda, a segunda estará preenchendo o espaço fluidamente
+            marqueeContainer.innerHTML = imagesHtml + imagesHtml;
+        };
+
+        // Inicializar marquee quando o DOM carregar
+        document.addEventListener('DOMContentLoaded', initDecorMarquee);
 
     </script>
 </body>
